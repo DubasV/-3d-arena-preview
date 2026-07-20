@@ -8,10 +8,11 @@
   const LANGAME_URL = "https://langame.ru/799456996_computerniy_club_3d-arena_moskva";
   const TELEGRAM_URL = "https://t.me/IIIDArena";
   const VK_URL = "https://vk.com/3d_arena";
+  const BOOKING_URL = `${LANGAME_URL}/booking`;
 
   const style = document.createElement("link");
   style.rel = "stylesheet";
-  style.href = "assets/css/release-06.css?v=20260720-3";
+  style.href = "assets/css/release-06.css?v=20260720-4";
   document.head.appendChild(style);
 
   document.querySelectorAll('a[href="tel:+79774192736"]').forEach(link => {
@@ -84,6 +85,21 @@
       <div class="price-note reveal visible">Актуальные условия и наличие мест подтверждаются в LANGAME или у администратора.</div>`;
   }
 
+  const bookingWays = document.querySelector("#booking .booking__ways");
+  if (bookingWays) {
+    bookingWays.innerHTML = `
+      <div class="bw-card bw-card--primary reveal visible">
+        <div class="bw-card__tag">Самый быстрый способ</div><h3>Забронировать в LANGAME</h3>
+        <p>Выберите зал, соседние места и время. Перед подтверждением вы увидите актуальную стоимость.</p>
+        <div class="bw-btns"><a class="bw-btn--accent" data-track="langame_booking" href="${BOOKING_URL}" rel="noopener" target="_blank">Выбрать место</a><a href="${LANGAME_URL}" rel="noopener" target="_blank">Страница клуба</a></div>
+      </div>
+      <div class="bw-card reveal visible">
+        <div class="bw-card__tag">Поможет администратор</div><h3>Позвонить или написать</h3>
+        <p>Сообщите дату, время и количество гостей — подберём подходящий зал и места рядом.</p>
+        <div class="bw-btns"><a data-track="booking_call" href="${PHONE_HREF}">${PHONE_TEXT}</a><a data-track="booking_telegram" href="${TELEGRAM_URL}" rel="noopener" target="_blank">Telegram</a></div>
+      </div>`;
+  }
+
   const promoInner = document.querySelector("#promo .promo__inner");
   if (promoInner) {
     promoInner.innerHTML = `
@@ -114,7 +130,7 @@
 
   const faqList = document.querySelector("#faq .faq__list");
   if (faqList && !faqList.querySelector('[data-faq="bonuses"]')) {
-    faqList.insertAdjacentHTML("beforeend", `<details class="faq__item" data-faq="bonuses"><summary>Как оплачивать бонусами?</summary><p>Бонусами можно оплатить до 50% стоимости игрового времени и пакетов, вторую половину — рублями. Для ночных пакетов бонусная оплата не действует.</p></details><details class="faq__item" data-faq="topup"><summary>Как получить автобонус за пополнение?</summary><p>Бонус начисляется при разовом пополнении от 1 000 ₽. Чем выше сумма пополнения, тем больше бонус — до 1 250 бонусов при пополнении от 5 000 ₽.</p></details>`);
+    faqList.insertAdjacentHTML("beforeend", `<details class="faq__item" data-faq="bonuses"><summary>Как активировать и использовать бонусы?</summary><p>Сначала пройдите полную регистрацию у администратора и предъявите любой документ, подтверждающий личность и возраст. После активации бонусами можно оплатить до 50% стоимости игрового времени и пакетов, вторую половину — рублями. Для ночных пакетов бонусная оплата не действует.</p></details><details class="faq__item" data-faq="topup"><summary>Как получить автобонус за пополнение?</summary><p>Бонус начисляется при разовом пополнении от 1 000 ₽. Чем выше сумма пополнения, тем больше бонус — до 1 250 бонусов при пополнении от 5 000 ₽.</p></details>`);
   }
 
   const track = (action, details = {}) => {
@@ -131,7 +147,7 @@
 
   if (!document.getElementById("welcomePopup")) {
     document.body.insertAdjacentHTML("beforeend", `
-      <div class="welcome-popup" id="welcomePopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="welcomePopupTitle"><div class="welcome-popup__backdrop" data-popup-close></div><div class="welcome-popup__dialog"><button class="welcome-popup__close" type="button" aria-label="Закрыть" data-popup-close>×</button><div class="welcome-popup__visual" aria-hidden="true"><span>Новый гость</span><strong>500</strong><small>бонусов</small></div><div class="welcome-popup__content"><div class="welcome-popup__eyebrow">Первое посещение</div><h2 id="welcomePopupTitle">Получите 500 бонусов за регистрацию</h2><p>Пройдите полную регистрацию у администратора. Бонусами можно оплатить до 50% игрового времени и пакетов, кроме ночных.</p><fieldset class="traffic-source"><legend>Откуда вы узнали о клубе?</legend><div class="traffic-source__grid"><button type="button" data-source="yandex_search">Яндекс</button><button type="button" data-source="yandex_maps">Яндекс Карты</button><button type="button" data-source="vk">VK</button><button type="button" data-source="telegram">Telegram</button><button type="button" data-source="friend">Друг</button><button type="button" data-source="signboard">Увидел рядом</button><button type="button" data-source="other">Другое</button></div></fieldset><div class="welcome-popup__actions"><a class="btn-primary" href="#booking" data-popup-action>Получить бонус</a><a class="btn-outline" href="${TELEGRAM_URL}" rel="noopener" target="_blank" data-popup-action>Задать вопрос</a></div><div class="welcome-popup__fineprint">Для активации нужен документ, подтверждающий личность и возраст. Это необходимо для соблюдения ночных возрастных ограничений и правил продажи энергетиков.</div></div></div></div>`);
+      <div class="welcome-popup" id="welcomePopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="welcomePopupTitle"><div class="welcome-popup__backdrop" data-popup-close></div><div class="welcome-popup__dialog"><button class="welcome-popup__close" type="button" aria-label="Закрыть" data-popup-close>×</button><div class="welcome-popup__visual" aria-hidden="true"><span>Новый гость</span><strong>500</strong><small>бонусов</small></div><div class="welcome-popup__content"><div class="welcome-popup__eyebrow">Первое посещение</div><h2 id="welcomePopupTitle">Получите 500 бонусов за регистрацию</h2><p>Пройдите полную регистрацию у администратора. Бонусами можно оплатить до 50% игрового времени и пакетов, кроме ночных.</p><fieldset class="traffic-source"><legend>Откуда вы узнали о клубе?</legend><div class="traffic-source__grid"><button type="button" data-source="yandex_search">Яндекс</button><button type="button" data-source="yandex_maps">Яндекс Карты</button><button type="button" data-source="vk">VK</button><button type="button" data-source="telegram">Telegram</button><button type="button" data-source="friend">Друг</button><button type="button" data-source="signboard">Увидел рядом</button><button type="button" data-source="other">Другое</button></div></fieldset><div class="welcome-popup__actions"><a class="btn-primary" href="${BOOKING_URL}" rel="noopener" target="_blank" data-popup-action data-track="welcome_booking">Забронировать и получить бонус</a><a class="btn-outline" href="${TELEGRAM_URL}" rel="noopener" target="_blank" data-popup-action data-track="welcome_question">Задать вопрос</a></div><div class="welcome-popup__fineprint">Для активации нужен документ, подтверждающий личность и возраст. Это необходимо для соблюдения ночных возрастных ограничений и правил продажи энергетиков.</div></div></div></div>`);
   }
 
   const popup = document.getElementById("welcomePopup");
