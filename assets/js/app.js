@@ -59,14 +59,6 @@
   });
   if (Object.keys(utm).length) localStorage.setItem("arena_utm", JSON.stringify(utm));
 
-  // Универсальные события: позже их подхватит Яндекс Метрика
-  window.dataLayer = window.dataLayer || [];
-  document.querySelectorAll("[data-track]").forEach(el => {
-    el.addEventListener("click", () => {
-      window.dataLayer.push({ event: "arena_click", action: el.dataset.track });
-    });
-  });
-
   // Лайтбокс галереи
   const lightbox = document.getElementById("lightbox");
   if (lightbox) {
@@ -93,6 +85,6 @@
 
   // Release 06: confirmed prices, promotions, loyalty and first-visit offer.
   const release06 = document.createElement("script");
-  release06.src = "assets/js/release-06.js?v=20260720-4";
+  release06.src = "assets/js/release-06.js?v=20260720-5";
   release06.defer = true;
   document.body.appendChild(release06);

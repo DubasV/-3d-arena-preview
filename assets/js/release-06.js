@@ -139,11 +139,32 @@
     const id = window.ARENA_METRIKA_ID;
     if (id && typeof window.ym === "function") window.ym(id, "reachGoal", action, details);
   };
+  const storedUtm = (() => {
+    try { return JSON.parse(localStorage.getItem("arena_utm") || "{}"); }
+    catch { return {}; }
+  })();
+  if (!sessionStorage.getItem("arena_page_view")) {
+    sessionStorage.setItem("arena_page_view", "1");
+    track("page_view", { path: location.pathname, referrer: document.referrer || "direct", ...storedUtm });
+  }
   document.querySelectorAll("[data-track]").forEach(element => {
     if (element.dataset.release06Tracked) return;
     element.dataset.release06Tracked = "1";
     element.addEventListener("click", () => track(element.dataset.track));
   });
+  document.querySelectorAll(".faq__item").forEach((item, index) => item.addEventListener("toggle", () => {
+    if (item.open) track("faq_open", { item: item.dataset.faq || String(index + 1) });
+  }));
+  const reached = new Set();
+  const trackDepth = () => {
+    const pageHeight = document.documentElement.scrollHeight - innerHeight;
+    if (pageHeight <= 0) return;
+    const depth = Math.round((scrollY / pageHeight) * 100);
+    [50, 90].forEach(mark => {
+      if (depth >= mark && !reached.has(mark)) { reached.add(mark); track(`scroll_${mark}`); }
+    });
+  };
+  addEventListener("scroll", trackDepth, { passive: true });
 
   if (!document.getElementById("welcomePopup")) {
     document.body.insertAdjacentHTML("beforeend", `
