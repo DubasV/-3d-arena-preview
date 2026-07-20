@@ -137,7 +137,10 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "arena_event", action, ...details });
     const id = window.ARENA_METRIKA_ID;
-    if (id && typeof window.ym === "function") window.ym(id, "reachGoal", action, details);
+    if (id && typeof window.ym === "function") {
+      window.ym(id, "reachGoal", action, details);
+      if (action.includes("booking") && action !== "langame_booking") window.ym(id, "reachGoal", "langame_booking", { source: action, ...details });
+    }
   };
   const storedUtm = (() => {
     try { return JSON.parse(localStorage.getItem("arena_utm") || "{}"); }
