@@ -38,3 +38,24 @@
 @media(max-width:920px){.price-highlights{grid-template-columns:1fr 1fr}.price-card--night{grid-column:1/-1}.welcome-popup__dialog{grid-template-columns:1fr}.welcome-popup__visual{display:none}}
 @media(max-width:760px){.price-highlights,.loyalty__grid{grid-template-columns:1fr}.price-card--night{grid-column:auto}.loyalty__rule{grid-template-columns:1fr;gap:6px}.status-block{grid-template-columns:1fr}.welcome-popup{padding:10px}.welcome-popup__dialog{width:100%;max-height:94vh;border-radius:18px}.welcome-popup__content{padding:34px 20px 24px}.welcome-popup__actions a{width:100%;justify-content:center}.traffic-source__grid{gap:6px}}
 .pcard-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}.pcard-links .pcard-cta{flex:1;min-width:110px;text-align:center}
+
+/* Release 07 — единая визуальная система тарифов, акций и лояльности */
+.prices{background:radial-gradient(circle at 88% 8%,rgba(26,110,255,.12),transparent 28%),#070c16}
+.price-tabs{position:relative}.price-sheet{border-radius:20px;box-shadow:0 22px 70px rgba(0,0,0,.22)}
+.price-sheet>header{background:linear-gradient(90deg,rgba(26,110,255,.14),rgba(26,110,255,.025))}
+.price-table tbody tr{transition:background .2s ease}.price-table tbody tr:hover{background:rgba(77,184,255,.055)}
+.price-table tbody td:nth-child(3),.price-table tbody td:nth-child(4){color:#8ecfff}
+.price-actions{border-radius:18px;background:linear-gradient(110deg,rgba(26,110,255,.13),rgba(13,22,40,.72))}
+.promo{background:radial-gradient(circle at 12% 18%,rgba(77,184,255,.1),transparent 30%),var(--bg)}
+.promo__grid{align-items:stretch}.pcard{display:flex;flex-direction:column;overflow:hidden;min-height:330px;border-radius:20px;background:linear-gradient(155deg,rgba(15,25,45,.95),rgba(7,12,23,.98));box-shadow:0 22px 70px rgba(0,0,0,.2)}
+.pcard::after{content:'';position:absolute;inset:auto -35% -58% 30%;height:190px;border-radius:50%;background:rgba(26,110,255,.12);filter:blur(38px);pointer-events:none}.pcard>*{position:relative;z-index:1}
+.pcard-tag{align-self:flex-start;border-radius:999px}.pcard-text{line-height:1.7}.pcard-cta{display:inline-flex;align-items:center;justify-content:center;min-height:42px;margin-top:auto;padding:10px 14px;border:1px solid rgba(77,184,255,.24);border-radius:10px;background:rgba(26,110,255,.08)}
+.pcard--hot{border-color:rgba(77,184,255,.46);background:radial-gradient(circle at 85% 0,rgba(26,110,255,.28),transparent 42%),linear-gradient(155deg,rgba(16,31,58,.98),rgba(7,12,23,.98))}
+.loyalty-row:last-child{background:linear-gradient(90deg,rgba(26,110,255,.07),transparent)}
+.status-list{counter-reset:arena-status}.status-list span{counter-increment:arena-status;display:inline-flex;align-items:center;gap:7px}.status-list span::before{content:counter(arena-status);display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(77,184,255,.14);color:var(--glow);font-size:10px}
+@media(max-width:760px){
+  .price-tabs{margin-inline:-20px}.price-sheet{border-radius:0;border-left:0;border-right:0}.price-sheet>header{padding:20px}.price-table-wrap{scrollbar-width:thin;scrollbar-color:rgba(77,184,255,.45) rgba(255,255,255,.04)}
+  .price-table th:first-child,.price-table td:first-child{position:sticky;left:0;z-index:2;background:#0a1120;box-shadow:9px 0 16px rgba(4,7,14,.32)}.price-table thead th:first-child{z-index:3}.price-table{min-width:700px}
+  .price-actions{margin-inline:0;padding:22px}.price-actions>div,.price-actions a{width:100%;text-align:center;justify-content:center}
+  .pcard{min-height:0;padding:25px}.pcard-icon{font-size:38px}.loyalty__rule{padding:20px}.loyalty__rule strong{font-size:34px}.loyalty-card__head,.loyalty-row{padding-left:20px;padding-right:20px}.status-block{padding:22px}.status-list{display:grid;grid-template-columns:1fr}.status-list span{width:100%;border-radius:12px}
+}
