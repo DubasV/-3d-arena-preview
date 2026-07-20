@@ -3,8 +3,8 @@
   if (document.documentElement.dataset.release06 === "ready") return;
   document.documentElement.dataset.release06 = "ready";
 
-  const PHONE_HREF = "tel:+79774192736";
-  const PHONE_TEXT = "+7 (977) 419-27-36";
+  const PHONE_HREF = "tel:+79259359344";
+  const PHONE_TEXT = "+7 (925) 935-93-44";
   const LANGAME_URL = "https://langame.ru/799456996_computerniy_club_3d-arena_moskva";
   const TELEGRAM_URL = "https://t.me/IIIDArena";
   const YANDEX_REVIEWS_URL = "https://yandex.ru/maps/org/3d_arena/107910722858/reviews/";
@@ -48,7 +48,7 @@
       "@type": "LocalBusiness",
       name: "Компьютерный клуб 3D АРЕНА",
       url: "https://3d-arena.ru/",
-      telephone: "+7 977 419-27-36",
+      telephone: "+7 925 935-93-44",
       image: "https://3d-arena.ru/images/gallery/hall-02.jpg",
       priceRange: "₽₽",
       openingHours: "Mo-Su 00:00-23:59",
