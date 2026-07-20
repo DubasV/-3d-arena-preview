@@ -282,6 +282,7 @@
 .nav.scrolled{background:rgba(5,8,15,.94);border-bottom-color:rgba(77,184,255,.18)}
 .nav__logo{font-size:18px;letter-spacing:.08em}
 .nav__logo-icon{width:38px;height:38px}
+.nav__logo-image{width:48px;height:42px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(77,184,255,.28));transition:filter .2s ease,transform .2s ease}.nav__logo:hover .nav__logo-image{filter:drop-shadow(0 0 15px rgba(77,184,255,.55));transform:translateY(-1px)}
 .brand-mark__shield{fill:rgba(13,22,40,.94);stroke:#4db8ff;stroke-width:2}.brand-mark__helmet{fill:#eaf4ff;stroke:#eaf4ff;stroke-linejoin:round;stroke-width:1.5}.brand-mark__visor,.brand-mark__crest{stroke:#1a6eff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.5}.nav__logo:hover .brand-mark__shield,.footer__logo:hover .brand-mark__shield{filter:drop-shadow(0 0 7px rgba(77,184,255,.72))}
 .nav__links{gap:clamp(18px,2vw,32px)}
 .nav__links a{font-size:11px;letter-spacing:.09em}
@@ -309,6 +310,7 @@
 .hero__contact a{color:#fff;font-weight:700}
 .hero__panel{padding:28px;border:1px solid rgba(255,255,255,.13);border-radius:20px;background:linear-gradient(155deg,rgba(13,22,40,.88),rgba(7,11,21,.72));backdrop-filter:blur(22px);box-shadow:0 24px 80px rgba(0,0,0,.38)}
 .hero__brand{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1);font-family:var(--font-h);font-size:18px;line-height:1.05;letter-spacing:.08em}.hero__brand small{font-family:var(--font-b);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#7f96b8}.hero__brand-monogram{display:grid;place-items:center;width:46px;height:46px;border:1px solid rgba(77,184,255,.45);border-radius:14px;background:linear-gradient(145deg,rgba(26,110,255,.28),rgba(8,13,25,.9));color:#fff;box-shadow:inset 0 0 24px rgba(77,184,255,.12),0 0 28px rgba(26,110,255,.14)}
+.hero__brand-logo{width:68px;height:58px;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 0 14px rgba(77,184,255,.3))}
 .hero__panel-label{margin-bottom:12px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--glow)}
 .hero__panel-title{font-family:var(--font-h);font-size:22px;line-height:1.3;margin-bottom:20px}
 .hero__quick{display:flex;flex-direction:column;gap:2px;padding:15px 0;border-top:1px solid rgba(255,255,255,.09);transition:padding-left .2s,color .2s}
@@ -327,6 +329,7 @@
 }
 @media(max-width:640px){
   .hero{padding-top:108px;padding-bottom:70px;align-items:flex-start}.hero__headline{font-size:clamp(36px,11.2vw,52px)}.hero__lead{font-size:16px}.hero__panel{padding:22px}.hero__contact{flex-direction:column;gap:5px}.hero__scroll-hint{display:none}
+  .nav__logo{gap:8px}.nav__logo-image{width:41px;height:36px}.nav__logo span{font-size:15px}.hero__facts{gap:7px}.hero__facts span{font-size:11px}.hero__actions{display:grid;grid-template-columns:1fr}.hero__actions a{text-align:center}.hero__panel{width:100%}.hero__brand-logo{width:58px;height:50px}
 }
 
 /* CLEAN brand ornament: floral geometry only, without stars or compass symbols. */
