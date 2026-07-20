@@ -11,7 +11,7 @@
 
   const style = document.createElement("link");
   style.rel = "stylesheet";
-  style.href = "assets/css/release-06.css";
+  style.href = "assets/css/release-06.css?v=20260720-2";
   document.head.appendChild(style);
 
   document.querySelectorAll('a[href="tel:+79774192736"]').forEach(link => {
