@@ -14,7 +14,7 @@
   style.href = "assets/css/release-06.css";
   document.head.appendChild(style);
 
-  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+  document.querySelectorAll('a[href="tel:+79774192736"]').forEach(link => {
     link.href = PHONE_HREF;
     if (link.textContent.trim().startsWith("+7")) link.textContent = PHONE_TEXT;
   });
