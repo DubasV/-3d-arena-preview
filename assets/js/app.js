@@ -90,3 +90,9 @@
     lightbox.addEventListener("click", event => { if (event.target === lightbox) closeLightbox(); });
     document.addEventListener("keydown", event => { if (event.key === "Escape") closeLightbox(); });
   }
+
+  // Release 06: confirmed prices, promotions, loyalty and first-visit offer.
+  const release06 = document.createElement("script");
+  release06.src = "assets/js/release-06.js";
+  release06.defer = true;
+  document.body.appendChild(release06);
