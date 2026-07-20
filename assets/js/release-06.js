@@ -7,7 +7,7 @@
   const PHONE_TEXT = "+7 (925) 935-93-44";
   const LANGAME_URL = "https://langame.ru/799456996_computerniy_club_3d-arena_moskva";
   const TELEGRAM_URL = "https://t.me/IIIDArena";
-  const YANDEX_REVIEWS_URL = "https://yandex.ru/maps/org/3d_arena/107910722858/reviews/";
+  const VK_URL = "https://vk.com/3d_arena";
 
   const style = document.createElement("link");
   style.rel = "stylesheet";
@@ -93,9 +93,9 @@
       <div class="promo__grid">
         <article class="pcard pcard--hot reveal visible"><div class="pcard-tag">Новым гостям</div><div class="pcard-icon">500</div><h3 class="pcard-title">500 бонусов за регистрацию</h3><p class="pcard-text">Пройдите полную регистрацию у администратора с подтверждением личности и возраста — после этого стартовые бонусы станут доступны.</p><a class="pcard-cta" data-track="promo_registration_500" href="#booking">Получить бонус</a></article>
         <article class="pcard reveal visible"><div class="pcard-tag">Приглашение</div><div class="pcard-icon">100</div><h3 class="pcard-title">100 бонусов за друга</h3><p class="pcard-text">Приглашайте нового гостя и получайте бонусы. Детали начисления уточняйте у администратора клуба.</p><a class="pcard-cta" data-track="promo_friend_100" href="${TELEGRAM_URL}" rel="noopener" target="_blank">Уточнить условия</a></article>
-        <article class="pcard reveal visible"><div class="pcard-tag">Обратная связь</div><div class="pcard-icon">300</div><h3 class="pcard-title">300 бонусов за отзыв и подписку</h3><p class="pcard-text">Оставьте отзыв о клубе на Яндекс Картах и подпишитесь на наши соцсети. Подтверждение покажите администратору.</p><a class="pcard-cta" data-track="promo_review_300" href="${YANDEX_REVIEWS_URL}" rel="noopener" target="_blank">Оставить отзыв</a></article>
+        <article class="pcard reveal visible"><div class="pcard-tag">Сообщества клуба</div><div class="pcard-icon">200</div><h3 class="pcard-title">До 200 бонусов за подписки</h3><p class="pcard-text">Получите 100 бонусов за подписку на Telegram и ещё 100 бонусов за подписку на VK. Подтверждение подписок покажите администратору.</p><div class="pcard-links"><a class="pcard-cta" data-track="promo_telegram_100" href="${TELEGRAM_URL}" rel="noopener" target="_blank">Telegram</a><a class="pcard-cta" data-track="promo_vk_100" href="${VK_URL}" rel="noopener" target="_blank">VK</a></div></article>
       </div>
-      <div class="promo__note reveal visible">Бонусами можно оплатить до 50% игрового времени и пакетов. Ночные пакеты бонусами не оплачиваются.</div>`;
+      <div class="promo__note reveal visible">Бонусами можно оплатить до 50% игрового времени и пакетов. Ночные пакеты бонусами не оплачиваются. Для активации бонусов требуется полная регистрация у администратора с подтверждением личности и возраста.</div>`;
   }
 
   const promoSection = document.getElementById("promo");
