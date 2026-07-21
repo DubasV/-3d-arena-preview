@@ -141,6 +141,7 @@
       window.ym(id, "reachGoal", action, details);
       if (action.includes("booking") && action !== "langame_booking") window.ym(id, "reachGoal", "langame_booking", { source: action, ...details });
     }
+    if (typeof window.arenaVkTrack === "function") window.arenaVkTrack(action);
   };
   const storedUtm = (() => {
     try { return JSON.parse(localStorage.getItem("arena_utm") || "{}"); }
