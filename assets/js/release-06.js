@@ -133,15 +133,26 @@
     faqList.insertAdjacentHTML("beforeend", `<details class="faq__item" data-faq="bonuses"><summary>Как активировать и использовать бонусы?</summary><p>Сначала пройдите полную регистрацию у администратора и предъявите любой документ, подтверждающий личность и возраст. После активации бонусами можно оплатить до 50% стоимости игрового времени и пакетов, вторую половину — рублями. Для ночных пакетов бонусная оплата не действует.</p></details><details class="faq__item" data-faq="topup"><summary>Как получить автобонус за пополнение?</summary><p>Бонус начисляется при разовом пополнении от 1 000 ₽. Чем выше сумма пополнения, тем больше бонус — до 1 250 бонусов при пополнении от 5 000 ₽.</p></details>`);
   }
 
+  const canonicalGoal = action => {
+    if (action === "booking_call" || action.includes("call")) return "booking_call";
+    if (action === "booking_telegram" || action.includes("telegram") || action === "welcome_question") return "booking_telegram";
+    if (action === "langame_booking" || action.includes("booking")) return "langame_booking";
+    return "";
+  };
   const track = (action, details = {}) => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "arena_event", action, ...details });
     const id = window.ARENA_METRIKA_ID;
     if (id && typeof window.ym === "function") {
       window.ym(id, "reachGoal", action, details);
-      if (action.includes("booking") && action !== "langame_booking") window.ym(id, "reachGoal", "langame_booking", { source: action, ...details });
+      const canonical = canonicalGoal(action);
+      if (canonical && canonical !== action) window.ym(id, "reachGoal", canonical, { source: action, ...details });
     }
-    if (typeof window.arenaVkTrack === "function") window.arenaVkTrack(action);
+    if (typeof window.arenaVkTrack === "function") {
+      window.arenaVkTrack(action);
+      const canonical = canonicalGoal(action);
+      if (canonical && canonical !== action) window.arenaVkTrack(canonical);
+    }
   };
   const storedUtm = (() => {
     try { return JSON.parse(localStorage.getItem("arena_utm") || "{}"); }
@@ -151,6 +162,9 @@
     sessionStorage.setItem("arena_page_view", "1");
     track("page_view", { path: location.pathname, referrer: document.referrer || "direct", ...storedUtm });
   }
+  document.querySelectorAll('a[href*="langame.ru"][href*="/booking"]:not([data-track])').forEach(element => { element.dataset.track = "langame_booking"; });
+  document.querySelectorAll('a[href^="tel:"]:not([data-track])').forEach(element => { element.dataset.track = "booking_call"; });
+  document.querySelectorAll('a[href*="t.me/IIIDArena"]:not([data-track])').forEach(element => { element.dataset.track = "booking_telegram"; });
   document.querySelectorAll("[data-track]").forEach(element => {
     if (element.dataset.release06Tracked) return;
     element.dataset.release06Tracked = "1";

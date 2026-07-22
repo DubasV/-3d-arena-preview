@@ -85,6 +85,6 @@
 
   // Release 06: confirmed prices, promotions, loyalty and first-visit offer.
   const release06 = document.createElement("script");
-  release06.src = "assets/js/release-06.js?v=20260720-6";
+  release06.src = "assets/js/release-06.js?v=20260722-1";
   release06.defer = true;
   document.body.appendChild(release06);
