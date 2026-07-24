@@ -116,7 +116,9 @@
     .acard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--glow));transform:scaleX(0);transform-origin:left;transition:transform .4s}
     .acard:hover{border-color:rgba(26,110,255,.5);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
     .acard:hover::before{transform:scaleX(1)}
-    .acard__icon{font-size:30px;margin-bottom:14px}
+    .acard__icon{margin-bottom:14px}
+    .feature-icon{display:block;width:30px;height:30px;fill:none;stroke:var(--glow);stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 12px rgba(77,184,255,.18))}
+    .feature-icon--stat{width:34px;height:34px;margin:0 auto}
     .acard__title{font-family:var(--font-h);font-size:14px;letter-spacing:.04em;margin-bottom:8px}
     .acard__text{font-size:13px;color:var(--muted);line-height:1.6}
 
@@ -344,7 +346,7 @@
 .service__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:38px}
 .service-card{padding:28px;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(15,24,43,.68);transition:transform .25s,border-color .25s,background .25s}
 .service-card:hover{transform:translateY(-5px);border-color:rgba(77,184,255,.3);background:rgba(17,29,52,.86)}
-.service-card span{display:block;font-size:32px;margin-bottom:18px}
+.feature-icon--service{width:32px;height:32px;margin-bottom:18px}
 .service-card h3{margin:0 0 10px;font-family:var(--font-h);font-size:18px}
 .service-card p{margin:0;color:#91a5c6;line-height:1.65}
 .pcard-cta{display:inline-flex;margin-top:20px;color:var(--glow);font-weight:700;font-size:13px}

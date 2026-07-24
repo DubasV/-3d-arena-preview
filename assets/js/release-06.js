@@ -21,7 +21,7 @@
   });
 
   const description = document.querySelector('meta[name="description"]');
-  if (description) description.content = "Компьютерный клуб «3D АРЕНА» у метро Молодёжная: 20 игровых мест, два зала, RTX 5060, PS5, работа 24/7. Новым гостям — 500 бонусов при регистрации.";
+  if (description) description.content = "Компьютерный клуб «3D АРЕНА» у метро Молодёжная: 20 игровых мест, два зала, RTX 5060 и PS5-зона с телевизором 65″ 4K до 288 Гц в игровом режиме. Работаем 24/7.";
 
   const addMeta = (attribute, name, content) => {
     let meta = document.querySelector(`meta[${attribute}="${name}"]`);
@@ -34,7 +34,7 @@
   };
   addMeta("name", "theme-color", "#070A12");
   addMeta("property", "og:title", "3D АРЕНА — компьютерный клуб у метро Молодёжная");
-  addMeta("property", "og:description", "20 игровых мест, два зала, RTX 5060, PS5, работа 24/7 и 500 бонусов новым гостям.");
+  addMeta("property", "og:description", "20 игровых мест, два зала, RTX 5060 и PS5-зона с телевизором 65″ 4K до 288 Гц в игровом режиме. Работаем 24/7.");
   addMeta("property", "og:type", "website");
   addMeta("property", "og:url", "https://3d-arena.ru/");
   addMeta("property", "og:image", "https://3d-arena.ru/images/gallery/hall-02.jpg");
