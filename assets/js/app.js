@@ -83,8 +83,20 @@
     document.addEventListener("keydown", event => { if (event.key === "Escape") closeLightbox(); });
   }
 
-  // Release 06: confirmed prices, promotions, loyalty and first-visit offer.
-  const release06 = document.createElement("script");
-  release06.src = "assets/js/release-06.js?v=20260722-1";
-  release06.defer = true;
-  document.body.appendChild(release06);
+  // Analytics is intentionally isolated from content: HTML remains the source of truth.
+  const canonicalGoal = action => {
+    if (action.includes("call")) return "booking_call";
+    if (action.includes("telegram")) return "booking_telegram";
+    if (action.includes("booking")) return "langame_booking";
+    return action;
+  };
+  const track = (action, details = {}) => {
+    const goal = canonicalGoal(action);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "arena_event", action, goal, ...details });
+    if (window.ARENA_METRIKA_ID && typeof window.ym === "function") window.ym(window.ARENA_METRIKA_ID, "reachGoal", goal, { source: action, ...details });
+    if (typeof window.arenaVkTrack === "function") window.arenaVkTrack(goal);
+  };
+  document.querySelectorAll("[data-track]").forEach(element => {
+    element.addEventListener("click", () => track(element.dataset.track));
+  });
