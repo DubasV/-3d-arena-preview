@@ -127,6 +127,7 @@
     .specs__inner{max-width:1280px;margin:0 auto}
     .specs__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:56px}
     .spec-item{background:var(--bg2);padding:32px 28px;transition:background .2s;position:relative}
+    .spec-item:last-child{grid-column:1/-1}
     .spec-item:hover{background:#0f1e35}
     .spec-item::after{content:'';position:absolute;bottom:0;left:28px;right:28px;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
     .spec-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
