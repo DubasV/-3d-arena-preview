@@ -210,12 +210,7 @@
     .footer__req span{color:var(--muted)}
 
     /* ===================== АНИМАЦИИ ===================== */
-    .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-    .reveal.visible{opacity:1;transform:none}
-    .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
-    .reveal-left.visible{opacity:1;transform:none}
-    .reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
-    .reveal-right.visible{opacity:1;transform:none}
+    .reveal,.reveal-left,.reveal-right{opacity:1;transform:none}
 
     /* ===================== МОБАЙЛ ===================== */
     @media(max-width:1024px){
