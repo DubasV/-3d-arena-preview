@@ -23,7 +23,7 @@
 <link as="style" href="https://fonts.googleapis.com/css2?family=Russo+One&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="preload"/>
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&amp;family=Inter:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Russo+One&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/></noscript>
-<meta content="noindex,nofollow,noarchive" name="robots"/><link href="https://3d-arena.ru/" rel="canonical"/><link href="assets/css/style.css?v=20260725-6" rel="stylesheet"/><link href="assets/css/release-06.css?v=20260724-1" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><link href="https://3d-arena.ru/" rel="canonical"/><link href="assets/css/style.css?v=20260725-7" rel="stylesheet"/><link href="assets/css/release-06.css?v=20260724-1" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Компьютерный клуб 3D АРЕНА","url":"https://3d-arena.ru/","telephone":"+7 925 935-93-44","image":"https://3d-arena.ru/images/gallery/hall-02.jpg","priceRange":"₽₽","openingHours":"Mo-Su 00:00-23:59","address":{"@type":"PostalAddress","streetAddress":"Оршанская улица, 9","addressLocality":"Москва","addressCountry":"RU"},"sameAs":["https://vk.ru/3d_arena","https://t.me/IIIDArena","https://yandex.ru/maps/org/3d_arena/107910722858/"]}</script>
 </head>
 <body>
@@ -57,7 +57,7 @@
 </div>
 <div class="hero__actions reveal">
 <a class="btn-primary" data-track="langame_booking" href="https://langame.ru/799456996_computerniy_club_3d-arena_moskva/booking" rel="noopener" target="_blank">Выбрать место в LANGAME</a>
-<a class="btn-outline" href="#prices">Посмотреть цены</a>
+<a class="btn-outline" data-track="view_prices" href="#prices">Посмотреть цены</a>
 </div>
 <div class="hero__contact reveal">
 <a href="tel:+79259359344">+7 (925) 935-93-44</a>
@@ -68,9 +68,9 @@
 <div class="hero__brand"><img alt="" aria-hidden="true" class="hero__brand-logo" height="372" src="assets/brand/mark.svg" width="564"/><span>3D АРЕНА<br/><small>Молодёжная</small></span></div>
 <div class="hero__panel-label">Открыты круглосуточно</div>
 <div class="hero__panel-title">Выбирайте удобный способ связи</div>
-<a class="hero__quick" href="https://t.me/IIIDArena" rel="noopener" target="_blank"><b>Telegram</b><span>Написать администратору →</span></a>
-<a class="hero__quick" href="tel:+79259359344"><b>Позвонить</b><span>Уточнить наличие мест →</span></a>
-<a class="hero__quick" href="#contacts"><b>Маршрут</b><span>Посмотреть на карте →</span></a>
+<a class="hero__quick" data-track="telegram" href="https://t.me/IIIDArena" rel="noopener" target="_blank"><b>Telegram</b><span>Написать администратору →</span></a>
+<a class="hero__quick" data-track="call" href="tel:+79259359344"><b>Позвонить</b><span>Уточнить наличие мест →</span></a>
+<a class="hero__quick" data-track="route" href="#contacts"><b>Маршрут</b><span>Посмотреть на карте →</span></a>
 </aside>
 </div>
 <div aria-hidden="true" class="hero__scroll-hint"><span></span>Листайте ниже</div>
@@ -90,13 +90,37 @@
 <article class="arena-card arena-card--esports reveal-left">
 <img alt="Зал «Киберспорт» в компьютерном клубе 3D АРЕНА" decoding="async" height="1200" loading="lazy" src="images/gallery/hall-01.jpg" width="1600"/>
 <div class="arena-card__veil"></div>
-<div class="arena-card__content"><span>01 · Киберспорт</span><h3>25″ · Full HD<br/>300 Гц</h3><p>10 игровых мест. Максимальная плавность для соревновательных игр.</p><a href="#specs">Смотреть конфигурацию →</a></div>
+<div class="arena-card__content"><span>01 · Киберспорт</span><h3>25″ · Full HD<br/>300 Гц</h3><p>10 игровых мест. Максимальная плавность для соревновательных игр.</p><a data-track="select_hall_esports" href="esports.html">Подробнее о зале →</a></div>
 </article>
 <article class="arena-card arena-card--comfort reveal-right">
 <img alt="Зал «Комфорт» в компьютерном клубе 3D АРЕНА" decoding="async" height="1200" loading="lazy" src="images/gallery/hall-06.jpg" width="1600"/>
 <div class="arena-card__veil"></div>
-<div class="arena-card__content"><span>02 · Комфорт</span><h3>27″ · 2K<br/>180 Гц</h3><p>10 игровых мест. Больше пространства и чёткая картинка.</p><a href="#specs">Смотреть конфигурацию →</a></div>
+<div class="arena-card__content"><span>02 · Комфорт</span><h3>27″ · 2K<br/>180 Гц</h3><p>10 игровых мест. Больше пространства и чёткая картинка.</p><a data-track="select_hall_comfort" href="comfort.html">Подробнее о зале →</a></div>
 </article>
+</div>
+</section>
+<!-- ПОДБОР ЗАЛА -->
+<section class="hall-picker section" id="hall-picker" aria-labelledby="hall-picker-title">
+<div class="hall-picker__inner">
+<div class="sec-label reveal">Подбор за 15 секунд</div>
+<h2 class="sec-title reveal" id="hall-picker-title">Какой формат <em>подойдёт вам?</em></h2>
+<p class="hall-picker__lead reveal">Ответьте на два вопроса — покажем наиболее подходящий вариант. Финальное наличие мест и стоимость проверяются в LANGAME.</p>
+<form class="hall-picker__form reveal" id="hallPicker">
+<fieldset><legend>Что важнее?</legend><div class="hall-picker__options">
+<label><input checked name="priority" type="radio" value="speed"/><span><b>Максимальная плавность</b><small>Соревновательные игры</small></span></label>
+<label><input name="priority" type="radio" value="detail"/><span><b>Детализация и размер</b><small>Большой экран и 2K</small></span></label>
+<label><input name="priority" type="radio" value="console"/><span><b>Играть на диване</b><small>Консоль с друзьями</small></span></label>
+</div></fieldset>
+<fieldset><legend>Сколько вас?</legend><div class="hall-picker__options hall-picker__options--compact">
+<label><input checked name="group" type="radio" value="solo"/><span><b>1–2</b><small>Игрока</small></span></label>
+<label><input name="group" type="radio" value="team"/><span><b>3–10</b><small>Игроков</small></span></label>
+</div></fieldset>
+<button class="btn-primary" type="submit">Подобрать зал</button>
+</form>
+<div class="hall-result" id="hallResult" hidden aria-live="polite">
+<div><span>Ваш вариант</span><h3 id="hallResultTitle"></h3><p id="hallResultText"></p></div>
+<div class="hall-result__actions"><a class="btn-outline" id="hallResultDetails" href="esports.html">Подробнее</a><a class="btn-primary" data-track="langame_booking_picker" href="https://langame.ru/799456996_computerniy_club_3d-arena_moskva/booking" rel="noopener" target="_blank">Выбрать место</a></div>
+</div>
 </div>
 </section>
 <!-- О КЛУБЕ -->
@@ -398,7 +422,7 @@
 </div>
 </div>
 </footer>
-<script defer="True" src="assets/js/app.js?v=20260725-1"></script>
+<script defer="True" src="assets/js/app.js?v=20260725-3"></script>
 <div class="mobile-cta" aria-label="Быстрые действия">
   <a href="tel:+79259359344" data-track="mobile_call">Позвонить</a>
   <a href="https://langame.ru/799456996_computerniy_club_3d-arena_moskva/booking" target="_blank" rel="noopener" data-track="mobile_booking">Выбрать место</a>
