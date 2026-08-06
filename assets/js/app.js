@@ -102,7 +102,7 @@
   // Analytics is intentionally isolated from content: HTML remains the source of truth.
   const canonicalGoal = action => {
     if (action.includes("call")) return "booking_call";
-    if (action.includes("telegram")) return "booking_telegram";
+    if (action.includes("telegram") || action === "welcome_question") return "booking_telegram";
     if (action.includes("booking")) return "langame_booking";
     return action;
   };
@@ -110,12 +110,95 @@
     const goal = canonicalGoal(action);
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "arena_event", action, goal, ...details });
-    if (window.ARENA_METRIKA_ID && typeof window.ym === "function") window.ym(window.ARENA_METRIKA_ID, "reachGoal", goal, { source: action, ...details });
-    if (typeof window.arenaVkTrack === "function") window.arenaVkTrack(goal);
+    if (window.ARENA_METRIKA_ID && typeof window.ym === "function") {
+      window.ym(window.ARENA_METRIKA_ID, "reachGoal", action, details);
+      if (goal !== action) window.ym(window.ARENA_METRIKA_ID, "reachGoal", goal, { source: action, ...details });
+    }
+    if (typeof window.arenaVkTrack === "function") {
+      window.arenaVkTrack(action);
+      if (goal !== action) window.arenaVkTrack(goal);
+    }
   };
+
+  // Offer for new guests. The declared source is stored locally and sent only
+  // as an analytics event; the visitor can still book without answering.
+  if (!document.getElementById("welcomePopup")) {
+    const popupBookingUrl = new URL("https://langame.ru/799456996_computerniy_club_3d-arena_moskva/booking");
+    try {
+      const savedAttribution = JSON.parse(localStorage.getItem("arena_attribution") || "{}");
+      Object.entries(savedAttribution).forEach(([key, value]) => {
+        if (attributionKeys.includes(key) && value) popupBookingUrl.searchParams.set(key, value);
+      });
+    } catch (_) {
+      // Booking remains usable when storage is unavailable.
+    }
+    document.body.insertAdjacentHTML("beforeend", `
+      <div class="welcome-popup" id="welcomePopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="welcomePopupTitle">
+        <div class="welcome-popup__backdrop" data-popup-close></div>
+        <div class="welcome-popup__dialog">
+          <button class="welcome-popup__close" type="button" aria-label="Закрыть" data-popup-close>×</button>
+          <div class="welcome-popup__visual" aria-hidden="true"><span>Новый гость</span><strong>500</strong><small>бонусов</small></div>
+          <div class="welcome-popup__content">
+            <div class="welcome-popup__eyebrow">Первое посещение</div>
+            <h2 id="welcomePopupTitle">Получите 500 бонусов за регистрацию</h2>
+            <p>Пройдите полную регистрацию у администратора. Бонусами можно оплатить до 50% игрового времени и пакетов, кроме ночных.</p>
+            <fieldset class="traffic-source">
+              <legend>Откуда вы узнали о клубе?</legend>
+              <div class="traffic-source__grid">
+                <button type="button" data-source="yandex_search">Яндекс</button>
+                <button type="button" data-source="yandex_maps">Яндекс Карты</button>
+                <button type="button" data-source="vk">VK</button>
+                <button type="button" data-source="telegram">Telegram</button>
+                <button type="button" data-source="friend">Друг</button>
+                <button type="button" data-source="signboard">Увидел рядом</button>
+                <button type="button" data-source="other">Другое</button>
+              </div>
+            </fieldset>
+            <div class="welcome-popup__actions">
+              <a class="btn-primary" href="${popupBookingUrl.toString()}" rel="noopener" target="_blank" data-popup-action data-track="welcome_booking">Забронировать и получить бонус</a>
+              <a class="btn-outline" href="https://t.me/IIIDArena" rel="noopener" target="_blank" data-popup-action data-track="welcome_question">Задать вопрос</a>
+            </div>
+            <div class="welcome-popup__fineprint">Для активации нужен документ, подтверждающий личность и возраст. Это необходимо для соблюдения ночных возрастных ограничений и правил продажи энергетиков.</div>
+          </div>
+        </div>
+      </div>`);
+  }
+
   document.querySelectorAll("[data-track]").forEach(element => {
     element.addEventListener("click", () => track(element.dataset.track));
   });
+
+  const welcomePopup = document.getElementById("welcomePopup");
+  if (welcomePopup) {
+    const popupParams = new URLSearchParams(window.location.search);
+    const closedKey = "arena_welcome_popup_closed_at";
+    const forcePopup = popupParams.get("welcome") === "1";
+    const disablePopup = popupParams.get("popup") === "0";
+    const lastClosed = Number(localStorage.getItem(closedKey) || 0);
+    const mayShow = forcePopup || (!disablePopup && (!lastClosed || Date.now() - lastClosed > 14 * 24 * 60 * 60 * 1000));
+    const openPopup = () => {
+      welcomePopup.classList.add("open");
+      welcomePopup.setAttribute("aria-hidden", "false");
+      document.body.classList.add("popup-open");
+      track("welcome_popup_open", { forced: forcePopup });
+    };
+    const closePopup = () => {
+      welcomePopup.classList.remove("open");
+      welcomePopup.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("popup-open");
+      if (!forcePopup) localStorage.setItem(closedKey, String(Date.now()));
+      track("welcome_popup_close");
+    };
+    welcomePopup.querySelectorAll("[data-popup-close],[data-popup-action]").forEach(element => element.addEventListener("click", closePopup));
+    welcomePopup.querySelectorAll("[data-source]").forEach(button => button.addEventListener("click", () => {
+      welcomePopup.querySelectorAll("[data-source]").forEach(item => item.classList.remove("selected"));
+      button.classList.add("selected");
+      localStorage.setItem("arena_declared_source", button.dataset.source);
+      track("traffic_source_selected", { source: button.dataset.source });
+    }));
+    document.addEventListener("keydown", event => { if (event.key === "Escape" && welcomePopup.classList.contains("open")) closePopup(); });
+    if (mayShow) window.setTimeout(openPopup, forcePopup ? 300 : 6000);
+  }
 
   // Hall picker: progressive enhancement; all hall pages remain directly linked in HTML.
   const hallPicker = document.getElementById("hallPicker");
