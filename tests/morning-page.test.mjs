@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const html = await readFile(new URL("../utro/index.html", import.meta.url), "utf8");
+const css = await readFile(new URL("../assets/css/morning.css", import.meta.url), "utf8");
 
 test("shows the verified morning package", () => {
   for (const value of ["08:00 до 13:00", "5 часов"]) {
@@ -48,4 +49,8 @@ test("uses real club images and accessible labels", () => {
   assert.match(html, /\.\.\/images\/gallery\/hall-01\.jpg/);
   assert.match(html, /\.\.\/images\/gallery\/hall-15\.jpg/);
   assert.doesNotMatch(html, /<img(?![^>]*alt=)[^>]*>/);
+});
+
+test("keeps hall photos responsive despite their HTML dimensions", () => {
+  assert.match(css, /\.morning-hall-card img\{[^}]*width:100%[^}]*height:auto[^}]*aspect-ratio:16\/10[^}]*object-fit:cover/);
 });
