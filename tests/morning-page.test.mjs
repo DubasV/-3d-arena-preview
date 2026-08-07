@@ -5,7 +5,7 @@ import { readFile } from "node:fs/promises";
 const html = await readFile(new URL("../utro/index.html", import.meta.url), "utf8");
 
 test("shows the verified morning package", () => {
-  for (const value of ["08:00–13:00", "5 часов", "540 ₽", "600 ₽", "660 ₽"]) {
+  for (const value of ["08:00 до 13:00", "5 часов", "540 ₽", "600 ₽", "660 ₽"]) {
     assert.match(html, new RegExp(value.replace(" ₽", "\\s*₽")));
   }
 });
