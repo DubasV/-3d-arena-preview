@@ -5,9 +5,18 @@ import { readFile } from "node:fs/promises";
 const html = await readFile(new URL("../utro/index.html", import.meta.url), "utf8");
 
 test("shows the verified morning package", () => {
-  for (const value of ["08:00 до 13:00", "5 часов", "540 ₽", "600 ₽", "660 ₽"]) {
+  for (const value of ["08:00 до 13:00", "5 часов"]) {
     assert.match(html, new RegExp(value.replace(" ₽", "\\s*₽")));
   }
+});
+
+test("binds each morning tariff to its day and hall", () => {
+  assert.match(html, /Будни[\s\S]*?Киберспорт<\/dt><dd>540\s*₽[\s\S]*?Комфорт<\/dt><dd>600\s*₽/);
+  assert.match(html, /Выходные[\s\S]*?Киберспорт<\/dt><dd>600\s*₽[\s\S]*?Комфорт<\/dt><dd>660\s*₽/);
+});
+
+test("keeps LANGAME as the only primary conversion CTA", () => {
+  assert.doesNotMatch(html, /class="btn btn--primary" href="tel:\+79259359344"/);
 });
 
 test("explains bonus registration honestly", () => {
