@@ -28,3 +28,15 @@ test("contains booking and contact paths", () => {
 test("keeps preview out of search results", () => {
   assert.match(html, /name="robots" content="noindex,nofollow,noarchive"/);
 });
+
+test("contains every conversion section", () => {
+  for (const id of ["morning-offer", "morning-prices", "morning-halls", "morning-bonus", "morning-proof", "morning-route", "morning-faq"]) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+});
+
+test("uses real club images and accessible labels", () => {
+  assert.match(html, /\.\.\/images\/gallery\/hall-01\.jpg/);
+  assert.match(html, /\.\.\/images\/gallery\/hall-15\.jpg/);
+  assert.doesNotMatch(html, /<img(?![^>]*alt=)[^>]*>/);
+});
