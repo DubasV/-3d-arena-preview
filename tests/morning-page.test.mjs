@@ -4,6 +4,12 @@ import { readFile } from "node:fs/promises";
 
 const html = await readFile(new URL("../utro/index.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../assets/css/morning.css", import.meta.url), "utf8");
+const home = await readFile(new URL("../index.html", import.meta.url), "utf8");
+
+test("homepage links to the morning offer", () => {
+  assert.match(home, /href="utro\/"/);
+  assert.match(home, /5 часов утром от 540 ₽/);
+});
 
 test("shows the verified morning package", () => {
   for (const value of ["08:00 до 13:00", "5 часов"]) {
