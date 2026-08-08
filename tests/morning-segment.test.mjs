@@ -26,3 +26,36 @@ test("scroll goals fire once when thresholds are crossed", () => {
   sent.add("morning_scroll_50");
   assert.deepEqual(getNewScrollGoals(0.91, sent), ["morning_scroll_90"]);
 });
+
+test("runtime segment copy uses only verified competitor facts", async () => {
+  const node = { textContent: "" };
+  const body = { dataset: {} };
+
+  globalThis.document = {
+    body,
+    readyState: "loading",
+    querySelector: selector => selector === "[data-segment-copy]" ? node : null,
+    addEventListener() {}
+  };
+
+  try {
+    const runtimeCopy = {};
+
+    for (const segment of ["student", "shift", "local", "competitor", "returning", "default"]) {
+      globalThis.location = { search: segment === "default" ? "" : `?utm_content=${segment}` };
+      await import(`../assets/js/morning.js?runtime-copy=${segment}`);
+      runtimeCopy[segment] = node.textContent;
+    }
+
+    for (const text of Object.values(runtimeCopy)) {
+      assert.doesNotMatch(text, /чистый зал|свежий воздух|тихо/i);
+    }
+
+    assert.match(runtimeCopy.competitor, /300 Гц/);
+    assert.match(runtimeCopy.competitor, /2K/);
+    assert.match(runtimeCopy.competitor, /540 ₽/);
+  } finally {
+    delete globalThis.document;
+    delete globalThis.location;
+  }
+});
