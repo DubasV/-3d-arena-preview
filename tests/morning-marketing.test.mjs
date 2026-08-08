@@ -17,6 +17,14 @@ test("matrix contains every source code", () => {
   }
 });
 
+test("matrix tells administrators how to capture shown source codes", () => {
+  assert.match(matrix, /гость показывает код.*администратор/i);
+  assert.match(matrix, /при регистрации или оплате/i);
+  assert.match(matrix, /точно в поле источника визита/i);
+  assert.match(matrix, /UTRO-WEB.*без распознанного платного сегмента/i);
+  assert.match(matrix, /код источника не да[её]т отдельную скидку/i);
+});
+
 test("matrix measures repeat paid visits with an honest manual cohort", () => {
   assert.match(matrix, /доля повторных оплаченных визитов в течение 30 дней/i);
   assert.match(matrix, /администратор фиксирует код источника.*первом оплач[её]нном визите/i);

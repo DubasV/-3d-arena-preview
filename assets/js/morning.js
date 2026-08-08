@@ -1,4 +1,12 @@
 const allowedSegments = new Set(["student", "shift", "local", "competitor", "returning"]);
+const sourceCodes = {
+  student: "UTRO-STUDENT",
+  shift: "UTRO-SHIFT",
+  local: "UTRO-LOCAL",
+  competitor: "UTRO-COMP",
+  returning: "UTRO-RETURN",
+  default: "UTRO-WEB"
+};
 
 export function getMorningSegment(search = "") {
   const value = new URLSearchParams(search).get("utm_content") || "";
@@ -14,13 +22,22 @@ export function getNewScrollGoals(ratio, sent) {
   return goals;
 }
 
+export function getMorningSourceCode(search = "") {
+  return sourceCodes[getMorningSegment(search)];
+}
+
+export function getNewDisclosureGoals(isOpen, sent) {
+  const goal = "morning_bonus_terms";
+  return isOpen && !sent.has(goal) ? [goal] : [];
+}
+
 const copy = {
   student: "Нет первой пары или появилось окно? Проведите его за игрой рядом с метро «Молодёжная».",
-  shift: "Закончилась смена? Спокойное утро, мощные ПК и 5 часов игры от 540 ₽.",
+  shift: "После смены: 5 часов игры от 540 ₽ в двух залах у метро «Молодёжная».",
   local: "Свободное утро рядом с домом: два игровых зала и 5 часов игры от 540 ₽.",
   competitor: "Выбирайте свой формат: 300 Гц или 2K и 5 часов игры от 540 ₽ рядом с метро «Молодёжная».",
   returning: "Вернитесь в 3D АРЕНУ утром: 5 часов игры от 540 ₽.",
-  default: "Спокойное утро, мощные ПК и два зала рядом с метро «Молодёжная»."
+  default: "Два игровых зала у метро «Молодёжная»: 300 Гц или 2K."
 };
 
 function dispatch(action, details = {}) {
@@ -42,6 +59,7 @@ function dispatch(action, details = {}) {
 
 function initializeAnalytics() {
   const sent = new Set();
+  const disclosureGoals = new Set();
 
   dispatch("morning_view");
   window.addEventListener("scroll", () => {
@@ -59,13 +77,34 @@ function initializeAnalytics() {
     dispatch(target.dataset.track);
     event.stopImmediatePropagation();
   }, { capture: true });
+
+  document.querySelectorAll("details[data-track-on-open]").forEach(details => {
+    details.addEventListener("toggle", () => {
+      for (const goal of getNewDisclosureGoals(details.open, disclosureGoals)) {
+        dispatch(goal);
+        disclosureGoals.add(goal);
+      }
+    });
+  });
+
+  const copyButton = document.querySelector("[data-copy-source]");
+  const sourceCodeNode = document.querySelector("[data-source-code]");
+  if (copyButton && sourceCodeNode && navigator.clipboard?.writeText) {
+    copyButton.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(sourceCodeNode.textContent);
+      copyButton.textContent = "Код скопирован";
+      dispatch("morning_source_copy", { sourceCode: sourceCodeNode.textContent });
+    });
+  }
 }
 
 if (typeof document !== "undefined") {
   const segment = getMorningSegment(location.search);
   const node = document.querySelector("[data-segment-copy]");
+  const sourceCodeNode = document.querySelector("[data-source-code]");
 
   if (node) node.textContent = copy[segment];
+  if (sourceCodeNode) sourceCodeNode.textContent = sourceCodes[segment];
   document.body.dataset.segment = segment;
 
   if (document.readyState === "loading") {
