@@ -165,6 +165,8 @@
   }
 
   document.querySelectorAll("[data-track]").forEach(element => {
+    if (element.dataset.trackOwner) return;
+    element.dataset.trackOwner = "app";
     element.addEventListener("click", () => track(element.dataset.track));
   });
 

@@ -166,8 +166,8 @@
   document.querySelectorAll('a[href^="tel:"]:not([data-track])').forEach(element => { element.dataset.track = "booking_call"; });
   document.querySelectorAll('a[href*="t.me/IIIDArena"]:not([data-track])').forEach(element => { element.dataset.track = "booking_telegram"; });
   document.querySelectorAll("[data-track]").forEach(element => {
-    if (element.dataset.release06Tracked) return;
-    element.dataset.release06Tracked = "1";
+    if (element.dataset.trackOwner) return;
+    element.dataset.trackOwner = "release06";
     element.addEventListener("click", () => track(element.dataset.track));
   });
   document.querySelectorAll(".faq__item").forEach((item, index) => item.addEventListener("toggle", () => {
