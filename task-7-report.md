@@ -13,3 +13,11 @@ Verification:
 - Visually inspected `hall-01.jpg`, `hall-15.jpg` and `hall-12.jpg`; their crops are suitable respectively for horizontal gaming-hall layouts and a vertical PS5 layout.
 - Structural check passed: 10 numbered briefs, 10 gallery-image references, 10 CTAs, every referenced image exists, no unsupported atmosphere claim, and `git diff --check` has no output.
 - `node --test tests/morning-marketing.test.mjs` could not run because this environment has no `node` executable (`command not found: node`). No dependency was installed and no external system was changed.
+
+## Review round 1
+
+Added the verified VK and Direct destination URLs to each of the ten briefs. Every pair exactly matches the relevant segment in `morning-campaign-matrix.md` and retains `utm_content` for that brief's segment.
+
+Added a contract test that requires both URLs in every brief and rejects another segment's `utm_content` within that brief.
+
+Verification used the bundled Node runtime: `node --test tests/morning-*.test.mjs` — 30 passed, 0 failed. `git diff --check` returned no output.

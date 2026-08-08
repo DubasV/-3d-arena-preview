@@ -71,3 +71,21 @@ test("every brief names a real source image", () => {
   const imageRefs = briefs.match(/images\/gallery\/hall-\d{2}\.jpg/g) || [];
   assert.equal(imageRefs.length, 10);
 });
+
+test("every creative brief keeps VK and Direct attribution within its segment", () => {
+  const segments = ["student", "shift", "local", "competitor", "returning"];
+  const blocks = briefs.split(/^## Creative \d+: /m).slice(1);
+
+  assert.equal(blocks.length, 10);
+
+  for (const block of blocks) {
+    const segment = block.split(" — ")[0].toLowerCase();
+    assert.ok(segments.includes(segment), `unexpected segment: ${segment}`);
+    assert.ok(block.includes(`https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=${segment}`));
+    assert.ok(block.includes(`https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=${segment}`));
+
+    for (const otherSegment of segments.filter((item) => item !== segment)) {
+      assert.ok(!block.includes(`utm_content=${otherSegment}`), `${segment} brief contains ${otherSegment} attribution`);
+    }
+  }
+});

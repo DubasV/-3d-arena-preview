@@ -17,6 +17,8 @@
 - Headline on image: 5 ЧАСОВ ОТ 540 ₽
 - Support line: 08:00–13:00 · МОЛОДЁЖНАЯ
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=student
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=student
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Нет первой пары? Проведите окно за игрой рядом с метро «Молодёжная».
@@ -29,6 +31,8 @@
 - Headline on image: 300 ГЦ ДО ПЕРВОЙ ПАРЫ
 - Support line: 5 ЧАСОВ УТРОМ
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=student
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=student
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Утренний пакет с 08:00 до 13:00: пять часов игры в зале «Киберспорт».
@@ -41,6 +45,8 @@
 - Headline on image: ПОСЛЕ СМЕНЫ — ОТ 540 ₽
 - Support line: 5 ЧАСОВ ИГРЫ
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=shift
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=shift
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Утренний пакет с 08:00 до 13:00: пять часов игры от 540 ₽.
@@ -53,6 +59,8 @@
 - Headline on image: 300 ГЦ ИЛИ 2K
 - Support line: УТРО В 3D АРЕНЕ
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=shift
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=shift
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Выберите зал «Киберспорт» с 300 Гц или зал «Комфорт» с 2K.
@@ -65,6 +73,8 @@
 - Headline on image: 5 ЧАСОВ РЯДОМ С ДОМОМ
 - Support line: ОТ 540 ₽ · МОЛОДЁЖНАЯ
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=local
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=local
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Утренний пакет: пять часов игры от 540 ₽ рядом с метро «Молодёжная».
@@ -77,6 +87,8 @@
 - Headline on image: ДВА ЗАЛА НА ВЫБОР
 - Support line: 300 ГЦ ИЛИ 2K
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=local
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=local
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: В клубе доступны залы «Киберспорт» с 300 Гц и «Комфорт» с 2K.
@@ -89,6 +101,8 @@
 - Headline on image: УТРО: 5 ЧАСОВ ОТ 540 ₽
 - Support line: М. МОЛОДЁЖНАЯ
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=competitor
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=competitor
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Утренний пакет действует с 08:00 до 13:00. Пять часов игры от 540 ₽.
@@ -101,6 +115,8 @@
 - Headline on image: 300 ГЦ. 2K.
 - Support line: ДВА ЗАЛА НА ВЫБОР
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=competitor
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=competitor
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Два зала: «Киберспорт» с 300 Гц и «Комфорт» с 2K.
@@ -113,6 +129,8 @@
 - Headline on image: ВЕРНИТЕСЬ УТРОМ
 - Support line: 5 ЧАСОВ ОТ 540 ₽
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=returning
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=returning
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: Утренний пакет действует с 08:00 до 13:00. Пять часов игры от 540 ₽.
@@ -125,6 +143,8 @@
 - Headline on image: ПК ИЛИ PS5
 - Support line: ВЫБЕРИТЕ СВОЙ ФОРМАТ
 - CTA: ЗАБРОНИРОВАТЬ
+- URL VK: https://3d-arena.ru/utro/?utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=returning
+- URL Direct: https://3d-arena.ru/utro/?utm_source=yandex&utm_medium=cpc&utm_campaign=morning&utm_content=returning
 - Logo: assets/brand/mark.svg, top-left, clear-space 32 px at 1080 px
 - Ornament: only the approved corrected pattern
 - Description: В клубе есть ПК-залы и зона PlayStation 5.
