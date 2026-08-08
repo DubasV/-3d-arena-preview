@@ -53,7 +53,7 @@ test("shows the verified morning package", () => {
 });
 
 test("loads the fixed morning assets with fresh cache keys", () => {
-  assert.match(html, /assets\/css\/morning\.css\?v=20260808-2/);
+  assert.match(html, /assets\/css\/morning\.css\?v=20260808-3/);
   assert.match(html, /<script type="module" src="\.\.\/assets\/js\/morning\.js\?v=20260808-2"><\/script>/);
 });
 
@@ -142,4 +142,11 @@ test("uses real club images and accessible labels", () => {
 
 test("keeps hall photos responsive despite their HTML dimensions", () => {
   assert.match(css, /\.morning-hall-card img\{[^}]*width:100%[^}]*height:auto[^}]*aspect-ratio:16\/10[^}]*object-fit:cover/);
+});
+
+test("keeps long section headings inside narrow mobile viewports", () => {
+  assert.match(
+    css,
+    /@media\(max-width:760px\)\{[^}]*\.morning-heading h2,\.morning-route h2\{font-size:clamp\(32px,10vw,40px\)\}/
+  );
 });
