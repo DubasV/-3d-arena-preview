@@ -33,6 +33,10 @@ test("shows the verified morning package", () => {
   }
 });
 
+test("loads the fixed morning runtime with a fresh cache key", () => {
+  assert.match(html, /<script type="module" src="\.\.\/assets\/js\/morning\.js\?v=20260808-1"><\/script>/);
+});
+
 test("binds each morning tariff to its day and hall", () => {
   assert.match(html, /Будни[\s\S]*?Киберспорт<\/dt><dd>540\s*₽[\s\S]*?Комфорт<\/dt><dd>600\s*₽/);
   assert.match(html, /Выходные[\s\S]*?Киберспорт<\/dt><dd>600\s*₽[\s\S]*?Комфорт<\/dt><dd>660\s*₽/);
