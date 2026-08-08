@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const matrix = await readFile(new URL("../marketing/morning-campaign-matrix.md", import.meta.url), "utf8");
+const briefs = await readFile(new URL("../marketing/morning-creative-briefs.md", import.meta.url), "utf8");
 
 test("matrix covers every tracked segment", () => {
   for (const segment of ["student", "shift", "local", "competitor", "returning"]) {
@@ -59,4 +60,14 @@ test("matrix requires separate owner confirmation for every external action", ()
   ]) {
     assert.match(matrix, new RegExp(`${action}.*отдельн[а-я]+ подтверждени[ея] владельца`, "i"));
   }
+});
+
+test("contains ten numbered creative briefs", () => {
+  const headings = briefs.match(/^## Creative \d+:/gm) || [];
+  assert.equal(headings.length, 10);
+});
+
+test("every brief names a real source image", () => {
+  const imageRefs = briefs.match(/images\/gallery\/hall-\d{2}\.jpg/g) || [];
+  assert.equal(imageRefs.length, 10);
 });
