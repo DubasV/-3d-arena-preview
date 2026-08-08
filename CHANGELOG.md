@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-07
+- Added a preview-only morning package landing page with verified prices and transparent bonus conditions.
+- Added segment-aware campaign messaging, conversion events, UTM matrix and ten creative briefs.
+- Kept production, live campaigns, bids and budgets unchanged.
+
 ## 2026-07-18
 
 - Вынесены стили и JavaScript из `index.html` в отдельные файлы.
