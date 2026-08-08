@@ -29,8 +29,10 @@ Controller verification completed against the final HEAD.
 - At 1440×900, DOM layout width was 1440 with no horizontal overflow; prices and registration disclosure were correct; there were no errors or broken images.
 - The homepage teaser is outside `#prices`, has one analytics owner, preserves allowlisted UTM parameters, and an actual click opened `/utro/` with the student segment when the popup was disabled.
 - Server logs for `/utro/` resources returned 200/304, with no landing-page 404s.
+- Final Pages-base QA served the repository under `/tmp/.../-3d-arena-preview` and opened `http://127.0.0.1:8766/-3d-arena-preview/?popup=0&utm_source=vk&utm_medium=cpc&utm_campaign=morning&utm_content=student`. At 390 px there was no overflow, no broken images and no console warnings/errors; the favicon resolved from the repository base path.
+- Pages-base server logs returned 200 for the homepage, CSS, JavaScript, images and favicon, with no 404s. The teaser href was `/-3d-arena-preview/utro/?...student`; an actual click opened it, loaded the student lead and returned 200 for the landing CSS and JavaScript.
 
-Known local-server limitation: the root homepage requested repository-prefixed favicon paths that returned 404 because localhost did not emulate the GitHub Pages base path. This is existing preview behavior, not a `/utro/` landing regression.
+The earlier localhost-root favicon 404 was a false result caused by a server that did not emulate the GitHub Pages base path; Pages-base QA closes it.
 
 ## External boundary
 
