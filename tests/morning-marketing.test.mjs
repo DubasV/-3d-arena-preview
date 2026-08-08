@@ -15,3 +15,48 @@ test("matrix contains every source code", () => {
     assert.match(matrix, new RegExp(code));
   }
 });
+
+test("matrix measures repeat paid visits with an honest manual cohort", () => {
+  assert.match(matrix, /доля повторных оплаченных визитов в течение 30 дней/i);
+  assert.match(matrix, /администратор фиксирует код источника.*первом оплач[её]нном визите/i);
+  assert.match(matrix, /LANGAME.*уч[её]т/i);
+  assert.match(matrix, /того же зарегистрированного гост[яеи].*30 дней/i);
+  assert.match(matrix, /не принимать решение о масштабировании.*30 дней/i);
+  assert.doesNotMatch(matrix, /целев[а-я]+.*%|процентн[а-я]+.*цель/i);
+});
+
+test("matrix defines planned placements without presenting them as live settings", () => {
+  for (const section of ["Student 18+", "Shift workers", "Local residents", "Competitor demand", "Returning visitors"]) {
+    const content = matrix.split(`## ${section}`)[1]?.split("## ")[0] || "";
+    assert.match(content, /VK.*лента.*истори.*коротк/i);
+    assert.match(content, /Direct.*поиск.*РСЯ/i);
+    assert.match(content, /гипотез|план теста/i);
+    assert.match(content, /не живая настройка/i);
+  }
+});
+
+test("matrix keeps the morning package inside its verified hours", () => {
+  assert.match(matrix, /Утренний пакет действует только с 08:00 до 13:00/i);
+  for (const window of ["07:00–08:00", "13:00–15:00", "06:00–08:00", "13:00–16:00", "13:00–23:00"]) {
+    assert.match(matrix, new RegExp(`${window}.*предварительного бронирования и предварительного маркетинга`));
+  }
+});
+
+test("matrix uses only confirmed product claims", () => {
+  assert.doesNotMatch(matrix, /тихо|чисто|свежий воздух/i);
+  assert.match(matrix, /5 часов игры от 540 ₽/);
+  assert.match(matrix, /300 Гц/);
+  assert.match(matrix, /2K/);
+});
+
+test("matrix requires separate owner confirmation for every external action", () => {
+  for (const action of [
+    "создания кампании или группы",
+    "загрузки креативов",
+    "публикации или включения",
+    "изменения бюджетов или ставок",
+    "подключения интеграции или передачи данных"
+  ]) {
+    assert.match(matrix, new RegExp(`${action}.*отдельн[а-я]+ подтверждени[ея] владельца`, "i"));
+  }
+});
