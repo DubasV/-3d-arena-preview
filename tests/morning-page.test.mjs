@@ -1,14 +1,30 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { buildMorningOfferUrl } from "../assets/js/morning-transition.js";
 
 const html = await readFile(new URL("../utro/index.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../assets/css/morning.css", import.meta.url), "utf8");
 const home = await readFile(new URL("../index.html", import.meta.url), "utf8");
+const app = await readFile(new URL("../assets/js/app.js", import.meta.url), "utf8");
+const release = await readFile(new URL("../assets/js/release-06.js", import.meta.url), "utf8");
 
 test("homepage links to the morning offer", () => {
-  assert.match(home, /href="utro\/"/);
+  assert.match(home, /data-morning-offer data-track="morning_landing" href="utro\/"/);
+  assert.match(home, /assets\/js\/morning-transition\.js/);
   assert.match(home, /5 часов утром от 540 ₽/);
+});
+
+test("morning transition preserves only allowed attribution", () => {
+  assert.equal(
+    buildMorningOfferUrl("?utm_source=vk&utm_content=student&yclid=abc123&unsafe=drop"),
+    "utro/?utm_source=vk&utm_content=student&yclid=abc123"
+  );
+});
+
+test("homepage analytics assigns each tracked link to one owner", () => {
+  assert.match(app, /if \(element\.dataset\.trackOwner\) return;/);
+  assert.match(release, /if \(element\.dataset\.trackOwner\) return;/);
 });
 
 test("shows the verified morning package", () => {
